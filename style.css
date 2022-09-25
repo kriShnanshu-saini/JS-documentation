@@ -1,0 +1,227 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: Arial;
+    width: 100%;
+    height: max-content;
+}
+:focus{
+    outline: none;
+}
+.container{
+    display: grid;
+    grid-template-rows: 280px 1fr;
+}
+
+/* =====================================
+            N a v - B a r
+   ===================================== */
+
+#navbar{
+    grid-row: 1/2;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: white;
+}
+#navbar > header{
+    text-align: center;
+    padding-block : .65em;
+    font-weight: 500;
+    font-size: 1.75rem;
+}
+
+.scrolling-div{
+    height: 210px;
+    margin-bottom: 1em;
+    border: 2px solid #4D4E53;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#navbar ul{
+    list-style: none;
+    overflow: hidden;
+}
+.nav-link{
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    padding: .82em 2em;
+    color:#4D4E53;
+    border-top: 1px solid #4D4E53;
+
+}
+
+::-webkit-scrollbar{
+    width:.5rem;
+}
+::-webkit-scrollbar-track{
+    background-color: #dddddd50;
+    border-radius: 100vh;
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(gray,rgb(207, 207, 207),gray);
+    border: 1px solid white;
+    border-radius: 100vh;
+}
+
+
+#navbar a:hover,
+#navbar a:focus{
+    transform: scale(1.05);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+#navbar a:active{
+    transform: scale(1);
+}
+
+/* =====================================
+        M a i n - C o n t e n t
+   ===================================== */
+
+main{
+    grid-row: 2/3;
+    margin: 1em 1.5em;
+    /* margin-top: 20em; */
+}
+main header {
+    font-size: 1.75rem;
+    margin-bottom: .75em;
+}
+main p,ul{
+    color:#4D4E53;
+    line-height: 1.5rem;
+    font-size: 0.94rem;
+}
+main section {
+    margin-bottom: 1em ;
+}
+section > *:not(header) {
+    padding-inline: 1.5em;
+}
+section > ul{
+    margin-left: 4em;
+    margin-top: .75em;
+}
+section > ul ul{
+    margin-left: 4em;
+}
+section li{
+    margin-block: .75em;
+}
+section > code{
+    display: block;
+    margin-inline: 2.5em;
+    margin-block:1em;
+    padding-inline: 1em;
+    padding-block: 1em;
+    line-height: 2;
+    font-family: monospace;
+    background-color:#f7f7f7;
+    color:#4D4E53;
+    font-size: 0.75rem;
+}
+
+
+/* =====================================
+                F o o t e r
+   ===================================== */
+footer{
+    grid-row: 3/4;
+    width: 100%;
+}
+.wrapper{
+    margin-top: 5em;
+    display:flex;
+    flex-direction: column;
+    font-size: .9rem;
+    padding-inline: 1.5em;
+    white-space: nowrap;
+}
+.wrapper .logo p:first-child{
+    font-weight: bold;
+    line-height: 2;
+}
+.wrapper div:first-child{
+    text-align: center;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #4d4e53;
+}
+.wrapper div:last-child{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 1em;
+}
+.wrapper ul{
+    display: flex;
+    list-style: none;
+    gap: 1em;
+    cursor: pointer;
+}
+.wrapper a{
+    text-decoration: none;
+    color:#4D4E53;
+}
+.wrapper p:hover,
+.wrapper li:hover{
+    transform: scale(1.1);
+}
+
+
+/* =====================================
+        M e d i a - Q u e r i e s
+   ===================================== */
+
+@media only screen and (min-width:690px){
+    #navbar{
+        all: unset;
+        height:100%;
+        border-right: 1px solid #4D4E53;
+    }
+    .container{
+        all: unset;
+        display: grid;
+        grid-template-columns: minmax(280px,320px) 1fr;
+        grid-template-areas: 
+        "side-bar main"
+        ". footer";
+    }
+    nav{
+        grid-area: side-bar;
+        height: 100%;
+        position: fixed !important;
+    }
+    .scrolling-div{
+        height: 85vh;
+        border:none;
+    } 
+    main{
+        grid-area: main;
+        margin-top: 2em;
+    }
+    main > section:first-child{
+        margin-top: 1.5em;
+    }
+    footer{
+        display: none;
+        grid-area: footer;
+    }
+}
+
+@media only screen and (min-width: 1700px){
+    html{
+        font-size: 22px;
+    }
+    main{
+        padding-inline: 4em;
+    }
+}
